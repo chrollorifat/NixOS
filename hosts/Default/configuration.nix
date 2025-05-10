@@ -102,6 +102,7 @@
 
     ###----- Browsers -----###
     google-chrome
+    brave
     ungoogled-chromium
     widevine-cdm
     # firefox-devedition
