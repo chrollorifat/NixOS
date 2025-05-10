@@ -11,7 +11,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/hardware/video/${videoDriver}.nix # Enable gpu drivers defined in flake.nix
-    ../../modules/hardware/drives
+    # ../../modules/hardware/drives
 
     ../common.nix
     ../../modules/scripts
@@ -36,7 +36,7 @@
     ../../modules/programs/media/spicetify
     # ../../modules/programs/media/youtube-music
     # ../../modules/programs/media/thunderbird
-    # ../../modules/programs/media/obs-studio
+    ../../modules/programs/media/obs-studio
     ../../modules/programs/media/mpv
     ../../modules/programs/misc/tlp
     ../../modules/programs/misc/thunar
@@ -51,39 +51,80 @@
       home.packages = with pkgs; [
         # pokego # Overlayed
         # lact # Overlayed [LONG COMPILE]
-        krita
+
+        ###---Terminal---###
+        pokego  # Overlayed
+        bash-completion
+        sherlock  # Find username across all social netwrks 
+        yt-dlp  # Cli tool for downloading youtube videos
+
+        ###---Image---###
         gimp
+        imv
+        krita
+        nomacs
+        waytrogen # Fast wallpaper setter for wayland
+
+        # lact # Overlayed [LONG COMPILE]
+        anki-bin
         github-desktop
+        nwg-look
+        zed-editor
+
+        ###---Documents---###
+        evince
+        kdePackages.okular # pdf viewer
+        koodo-reader # Ebook reader (cross platform)
+        meld
+        obsidian  # Markdown Note Taking app
+        pdfarranger  # pdf merging and splitting tool
+        readest  # Ebook reader
+        yacreader  # comic viewer
+
+        keepassxc
+        # godot_4
+        # unityhub
+        # gparted
       ];
     })
   ];
 
   # Define system packages here
   environment.systemPackages = with pkgs; [
+    # Archiving Utilities
+    p7zip-rar
+    p7zip
+    gnutar
+    zip
+    unrar-free
+    unzip
+    kdePackages.ark
+
+    ###----- Browsers -----###
+    google-chrome
+    ungoogled-chromium
+    widevine-cdm
+    # firefox-devedition
+    # vivaldi
+    # vivaldi-ffmpeg-codecs
+
+    dconf-editor
+    dex
+    font-manager
+    fsearch
+    gnome-disk-utility
+    # libgccjit
+    # llvmPackages_17.libcxxClang
+    nixos-generators
+    platinum-searcher
+    scrot
+    ventoy-full  # usb flasher
   ];
 
   networking.hostName = hostname; # Set hostname defined in flake.nix
 
-  # Stream my media to my devices via the network
-  services.minidlna = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      friendly_name = "NixOS-DLNA";
-      media_dir = [
-        # A = Audio, P = Pictures, V, = Videos, PV = Pictures and Videos.
-        # "A,/mnt/work/Pimsleur/Russian"
-        "/mnt/work/Pimsleur"
-        "/mnt/work/Media/Films"
-        "/mnt/work/Media/Series"
-        "/mnt/work/Media/Videos"
-        "/mnt/work/Media/Music"
-      ];
-      inotify = "yes";
-      log_level = "error";
-    };
-  };
-  users.users.minidlna = {
-    extraGroups = ["users"]; # so minidlna can access the files.
-  };
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1w"
+  ];
+
 }

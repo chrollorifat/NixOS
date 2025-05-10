@@ -54,6 +54,8 @@
         cliphist
         grimblast
         swappy
+        kdePackages.dolphin
+        kdePackages.kio-extras    # Adds compress, extract functionalities in dolphin
         libnotify
         brightnessctl
         networkmanagerapplet
@@ -109,6 +111,9 @@
             "QT_AUTO_SCREEN_SCALE_FACTOR,1"
             "WLR_RENDERER_ALLOW_SOFTWARE,1"
             "NIXPKGS_ALLOW_UNFREE,1"
+            "QT_IM_MODULE, fcitx"
+            "GTK_IM_MODULE, fcitx"
+            "XMODIFIERS, @im=fcitx"
           ];
           exec-once = [
             #"[workspace 1 silent] ${terminal}"
@@ -120,6 +125,8 @@
             "hyprpaper"
             "waybar"
             "swaync"
+            "fcitx5 -d -r"
+            "fcitx5-remote -r"
             "nm-applet --indicator"
             "wl-clipboard-history -t"
             "${getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch cliphist store" # clipboard store text data
@@ -138,9 +145,7 @@
 
             follow_mouse = 1;
 
-            touchpad.natural_scroll = false;
-
-            tablet.output = "current";
+            touchpad = {natural_scroll = true;};
 
             sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
             force_no_accel = true;
@@ -334,17 +339,12 @@
             ",XF86AudioLowerVolume,exec,pamixer -d 2"
             ",XF86AudioRaiseVolume,exec,pamixer -i 2"
           ];
-          bind = let
-            autoclicker = pkgs.callPackage ./scripts/autoclicker.nix {};
-          in
+          bind =
             [
               # Keybinds help menu
               "$mainMod, question, exec, ${./scripts/keybinds.sh}"
               "$mainMod, slash, exec, ${./scripts/keybinds.sh}"
               "$mainMod CTRL, K, exec, ${./scripts/keybinds.sh}"
-
-              "$mainMod, F8, exec, kill $(cat /tmp/auto-clicker.pid) 2>/dev/null || ${lib.getExe autoclicker} --cps 40"
-              # "$mainMod ALT, mouse:276, exec, kill $(cat /tmp/auto-clicker.pid) 2>/dev/null || ${lib.getExe autoclicker} --cps 60"
 
               # Night Mode (lower value means warmer temp)
               "$mainMod, F9, exec, ${getExe pkgs.hyprsunset} --temperature 3500" # good values: 3500, 3000, 2500

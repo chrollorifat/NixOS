@@ -6,6 +6,17 @@
         scripts = with pkgs.mpvScripts; [
           thumbnail
           mpris
+          mpvacious
+          #mpv-discord
+          #manga-reader
+          mpv-osc-tethys
+          mpv-cheatsheet
+          #modernx-zydezu
+          #uosc
+          autosubsync-mpv
+          #simple-mpv-webui
+          autoload
+          smart-copy-paste-2
         ];
         bindings = rec {
           MBTN_LEFT_DBL = "cycle fullscreen";
@@ -99,7 +110,9 @@
           # T = "script-binding generate-thumbnails";
         };
         config = {
+          save-position-on-quit = "yes";
           osc = "no";
+          watch-later-directory = "${config.xdg.stateHome}/mpv/watch_later";
           resume-playback-check-mtime = true;
           # ao = "alsa";
           audio-file-auto = "fuzzy";
@@ -107,12 +120,13 @@
           # gpu-context = "waylandvk";
           wayland-edge-pixels-pointer = 0;
           wayland-edge-pixels-touch = 0;
-          screenshot-format = "webp";
+          screenshot-format = "jpg";
           screenshot-webp-lossless = true;
           screenshot-directory = "${config.home.homeDirectory}/Pictures/Screenshots/mpv";
           screenshot-sw = true;
           # cache-dir = "${config.xdg.cacheHome}/mpv";
           input-default-bindings = false;
+          ytdl-format = "bestvideo+bestaudio";
         };
       };
     })

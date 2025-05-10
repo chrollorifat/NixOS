@@ -68,7 +68,6 @@
               # "noise_reduction" = 0.77;
               sleep_timer = 5;
               bar_delimiter = 0;
-              on-click = "playerctl play-pause";
             };
             "custom/gpuinfo" = {
               exec = "${../../scripts/gpuinfo.sh}";

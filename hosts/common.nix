@@ -31,6 +31,7 @@
       "libvirtd"
       "video"
       "audio"
+      "storage"
     ];
   };
 
@@ -58,20 +59,18 @@
 
       # Packages that don't require configuration. If you're looking to configure a program see the /modules dir
       home.packages = with pkgs; [
-        # Applications
-        #kate
+        ###---Applications---###
+        # micro
+        sublime4
+        telegram-desktop
+        qbittorrent-enhanced
 
-        # Terminal
-        fzf
+        ###---Terminal---###
         fd
-        git
         gh
-        htop
         nix-prefetch-scripts
+        neofetch
         microfetch
-        ripgrep
-        tldr
-        unzip
         (pkgs.writeShellScriptBin "hello" ''
           echo "Hello ${username}!"
         '')
@@ -96,10 +95,11 @@
     tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_zen; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
     loader = {
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot";
+      # efi.efiSysMountPoint = "/boot";
       timeout = null; # Display bootloader indefinitely until user selects OS
-      grub = {
+      /* grub = {
         enable = true;
         device = "nodev";
         efiSupport = true;
@@ -118,6 +118,7 @@
           installPhase = "cp -r customize/nixos $out";
         };
       };
+      */
     };
   };
 
@@ -251,14 +252,35 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # System
+    arandr
+    bat 
+    btop
+    blueberry
+    networkmanagerapplet
+    curl
+    duf
+    htop
+    fzf
+    git
+    tree
     killall
     lm_sensors
+    lshw
+    most
+    numlockx
+    hw-probe
+    hwinfo
     jq
     bibata-cursors
+    ripgrep
+    tldr
     sddm-astronaut # Overlayed
+    wget
     pkgs.kdePackages.qtsvg
     pkgs.kdePackages.qtmultimedia
     pkgs.kdePackages.qtvirtualkeyboard
+    # vulkan-tools
     # libsForQt5.qt5.qtgraphicaleffects
 
     # devenv

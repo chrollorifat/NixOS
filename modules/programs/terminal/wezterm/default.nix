@@ -16,7 +16,7 @@
           local font_name = "JetBrainsMono Nerd Font"
 
           return {
-            font_size = 12.0,
+            font_size = 13.0,
 
            -- Font config
             font = font_with_fallback(font_name),
@@ -41,8 +41,8 @@
             enable_tab_bar = false,
             scrollback_lines = 10000,
             window_padding = {
-              left = 0,
-              right = 0,
+              left = 3,
+              right = 3,
               top = 0,
               bottom = 0,
             },
