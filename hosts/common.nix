@@ -99,7 +99,8 @@
       efi.canTouchEfiVariables = true;
       # efi.efiSysMountPoint = "/boot";
       timeout = null; # Display bootloader indefinitely until user selects OS
-      /* grub = {
+      /*
+      grub = {
         enable = true;
         device = "nodev";
         efiSupport = true;
