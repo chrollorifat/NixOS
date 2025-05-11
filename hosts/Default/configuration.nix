@@ -22,6 +22,7 @@
     ../../modules/programs/games
     ../../modules/programs/browser/${browser} # Set browser defined in flake.nix
     ../../modules/programs/terminal/${terminal} # Set terminal defined in flake.nix
+    ../../modules/programs/terminal/kitty  # Enable kitty terminal
     ../../modules/programs/editor/${editor} # Set editor defined in flake.nix
     ../../modules/programs/cli/${terminalFileManager} # Set file-manager defined in flake.nix
     ../../modules/programs/cli/starship
