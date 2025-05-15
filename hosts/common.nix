@@ -137,6 +137,12 @@
     LC_TELEPHONE = locale;
     LC_TIME = locale;
   };
+
+ # All Locales support
+  i18n.supportedLocales = [
+    "all"
+  ];
+
   console.keyMap = consoleKeymap; # Configure console keymap
   services.xserver = {
     exportConfiguration = true; # Make sure /etc/X11/xkb is populated so localectl works correctly
