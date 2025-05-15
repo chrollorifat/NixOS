@@ -39,7 +39,6 @@
         "Kalpurush"
         "Siyam Rupali"
         "SutonnyMj"
-        "Himu Unicode"
       ];
       serif = [
         "Lora"
@@ -54,7 +53,6 @@
         "Kalpurush"
         "Siyam Rupali"
         "SutonnyMj"
-        "Himu Unicode"
       ];
       emoji = [ "Noto Color Emoji" ];
     };
@@ -113,7 +111,6 @@
     migmix  # High Quality JP font based on M+ and IPA fonts
     hachimarupop  # Cute Japanese Font
     migu  # HQ JP font based on modified M+ and IPA fonts
-    hanazono  # JP Mincho Typeface Truetype font
     kochi-substitute  # Free replacement for MS Gothic and MS Mincho JP
 
     # Personal Custom Fonts
@@ -121,16 +118,10 @@
     (callPackage ./personal/sutonnymj {})  
     (callPackage ./personal/siyamrupali {})  
     (callPackage ./personal/shonar-bangla {})  
-    (callPackage ./personal/apona-lohit {})  
-    (callPackage ./personal/himu {})  
-    (callPackage ./personal/nikosh {})  
     (callPackage ./proxima-nova {})
     (callPackage ./helvetica-neue {})
     (callPackage ./code-pro {})
-    (callPackage ./gabriel-sans {})
-    (callPackage ./solomon-sans {})
     (callPackage ./intro {})
-    (callPackage ./avenir {})
     (callPackage ./garamond {})
     (callPackage ./pf-encore-sans {})
 
