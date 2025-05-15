@@ -118,7 +118,6 @@
     (callPackage ./personal/sutonnymj {})  
     (callPackage ./personal/siyamrupali {})  
     (callPackage ./personal/shonar-bangla {})  
-    (callPackage ./proxima-nova {})
     (callPackage ./helvetica-neue {})
     (callPackage ./code-pro {})
     (callPackage ./intro {})
